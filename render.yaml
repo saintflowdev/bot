@@ -1,0 +1,19 @@
+services:
+  - type: worker
+    name: tg-broadcast-bot
+    runtime: docker
+    plan: starter
+    autoDeploy: true
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_IDS
+        sync: false
+      - key: TZ_NAME
+        value: Asia/Yekaterinburg
+      - key: DB_PATH
+        value: /data/bot.db
+    disk:
+      name: bot-data
+      mountPath: /data
+      sizeGB: 1
